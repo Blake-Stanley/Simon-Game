@@ -36,12 +36,16 @@ while loop:
         pos = pg.mouse.get_pos()
         if buttonG.isClicked(pos):
             print("green")
+            #instead of printing call function from another file to blink image and to do the logic 
         elif buttonR.isClicked(pos):
             print("Red")
+            #instead of printing call function from another file to blink image and to do the logic 
         elif buttonY.isClicked(pos):
             print("Yellow")
+            #instead of printing call function from another file to blink image and to do the logic 
         if buttonB.isClicked(pos):
             print("Blue")
+            #instead of printing call function from another file to blink image and to do the logic 
     
     if event.type == pg.MOUSEBUTTONUP:
         count = 0
