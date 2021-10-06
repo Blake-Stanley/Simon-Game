@@ -15,8 +15,8 @@ buttonR = button.Button(335, 0, 672, 335, "Red")
 buttonY = button.Button(0, 335, 335, 672, "Yellow")
 buttonB = button.Button(335, 335, 672, 672, "Blue")
 
-#count variable tracks whether the button has been clicked so that if you hold down mouseclick it only clicks once 
-count = 0
+# variable tracks whether the button has been clicked so that if you hold down mouseclick it only clicks once 
+allowClick = True
 loop = True
 while loop:
     for event in pg.event.get():
@@ -31,24 +31,20 @@ while loop:
     pg.display.flip()
     
     pg.display.update()
-    if event.type == pg.MOUSEBUTTONDOWN and count == 0:
-        count = 1
+    if event.type == pg.MOUSEBUTTONDOWN and allowClick is True:
+        allowClick = False
         pos = pg.mouse.get_pos()
         if buttonG.isClicked(pos):
             print("green")
-            #instead of printing call function from another file to blink image and to do the logic 
         elif buttonR.isClicked(pos):
             print("Red")
-            #instead of printing call function from another file to blink image and to do the logic 
         elif buttonY.isClicked(pos):
             print("Yellow")
-            #instead of printing call function from another file to blink image and to do the logic 
         if buttonB.isClicked(pos):
             print("Blue")
-            #instead of printing call function from another file to blink image and to do the logic 
     
     if event.type == pg.MOUSEBUTTONUP:
-        count = 0
+        allowClick = True
     
 pg.quit()
 quit()
