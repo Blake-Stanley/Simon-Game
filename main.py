@@ -89,7 +89,7 @@ def mainGame():
             simonSoundPanel.soundColor(currentColor)
             logic.appendPlayerSequence(currentColor)
             if logic.check() is False:
-                print("you failed")  # bring to loss screen instead | lossPage()
+                print("you failed")  # TODO bring to loss screen instead -> lossPage()
                 loop = False
             print("iterated")
 
@@ -119,11 +119,13 @@ def titleScreen():
         pg.display.update()
         pg.time.delay(200)
 
+# TODO write menu screen funtion 
 def menu():
     pass
 
+# TODO write loss page function - don't forget to add high score logic in here 
 def lossPage():
-    pass # don't forget to add high score logic in here 
+    pass 
 
 def main():
     titleScreen()
