@@ -95,17 +95,15 @@ def mainGame():
             if logic.check() is False:
                 print("you failed")  # TODO bring to loss screen instead -> lossPage()
                 loop = False
-            print("iterated")
 
             if len(logic.getPlayerSequence()) == len(logic.getSequence()):
                 logic.clearPlayerSequence()
                 logic.progress()
                 runSequence()
-                print("running sequence")
             allowClick = True
 
 # loads in the title screen pngs
-title1 = pg.image.load("Graphics/KGD Logo frame 1.png")
+title1 = pg.image.load("Graphics/KGD Logo frame 1-1.png.png")
 title2 = pg.image.load("Graphics/kgd frame 2.png")
 title3 = pg.image.load("Graphics/kgd frame 3.png")
 title4 = pg.image.load("Graphics/kgd frame 4.png")
@@ -113,7 +111,7 @@ title5 = pg.image.load("Graphics/kgd frame 5.png")
 
 titles = [title1, title2, title3, title4, title5]
 # title screen background png 
-background = pg.image.load("background2.png")
+background = pg.image.load("Graphics/background2.png")
 
 # plays title screen animation 
 def titleScreen():

@@ -10,7 +10,7 @@ def soundColor(color):
 
     if(color == 'g'):
         #creates the sound object
-        greenSound = pygame.mixer.Sound("D_01.ogg")
+        greenSound = pygame.mixer.Sound("Sounds/D_01.ogg")
 
         #plays the sound object
         pygame.mixer.Sound.play(greenSound, maxtime = 400)
@@ -18,7 +18,7 @@ def soundColor(color):
 
     if(color == 'r'):
         #creates the sound object
-        redSound = pygame.mixer.Sound("F_01.ogg")
+        redSound = pygame.mixer.Sound("Sounds/F_01.ogg")
 
         #plays the sound object
         pygame.mixer.Sound.play(redSound, maxtime = 400)
@@ -26,7 +26,7 @@ def soundColor(color):
 
     if(color == 'y'):
         #creates the sound object
-        yellowSound = pygame.mixer.Sound("A_01.ogg")
+        yellowSound = pygame.mixer.Sound("Sounds/A_01.ogg")
 
         #plays the sound object
         pygame.mixer.Sound.play(yellowSound, maxtime = 400)
@@ -34,7 +34,7 @@ def soundColor(color):
 
     if(color == 'b'):
         #creates the sound object
-        blueSound = pygame.mixer.Sound("C_01.ogg")
+        blueSound = pygame.mixer.Sound("Sounds/C_01.ogg")
 
         #plays the sound object
         pygame.mixer.Sound.play(blueSound, maxtime = 400)
