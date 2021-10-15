@@ -96,7 +96,7 @@ def mainGame():
                 print("you failed")  # TODO bring to loss screen instead -> lossPage()
                 loop = False
 
-            if len(logic.getPlayerSequence()) == len(logic.getSequence()):
+            elif len(logic.getPlayerSequence()) == len(logic.getSequence()):
                 logic.clearPlayerSequence()
                 logic.progress()
                 runSequence()
