@@ -11,10 +11,7 @@ class Button:
         self.y2 = y2
         self.font = pygame.font.Font(None, 25)
         size = self.font.size(word)
-        #self.height = size[1]+10
-        #self.width = size[0]+10
         self.text = word
-        #pygame.font.init()
 
     # Draw the button
     def draw(self, window, R, G, B):
@@ -25,7 +22,6 @@ class Button:
 
     # Determine if the mouse click was on the button
     def isClicked(self,mouse):
-        #print("mx = " , mouse[0], "\nmy = ", mouse[1])
         if(mouse[0] >= self.x1 and mouse[0] <= self.x2) and (mouse[1] >= self.y1 and mouse[1] <= self.y2):
             return True
         return False

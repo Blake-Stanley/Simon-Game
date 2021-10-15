@@ -3,7 +3,7 @@ import pygame as pg
 # by including a "__init__.py" in all the folders, by doing folder.file we can import from other folders
 import Graphics.Button as button
 import Sounds.simonSoundPanel as simonSoundPanel
-import Logic.logic as logic 
+import Logic.logic as logic
 
 surface = pg.display.set_mode((672, 672))
 pg.display.set_caption("Simon Game")
@@ -12,18 +12,16 @@ screen = pg.display.set_mode((672, 672))
 mainPNG = pg.image.load("Graphics/simondefault1.png")
 
 pg.font.init()
-# create buttons that rest behind pngs that create clickability 
+# create buttons that rest behind pngs that create clickability
 buttonG = button.Button(0, 0, 335, 335, "Green")
 buttonR = button.Button(335, 0, 672, 335, "Red")
 buttonY = button.Button(0, 335, 335, 672, "Yellow")
 buttonB = button.Button(335, 335, 672, 672, "Blue")
 
-
-
 pg.display.flip()
 
 # color must be inputted as 'r' 'g' 'b' or 'y'
-# loading in game pngs 
+# loading in game pngs
 y = pg.image.load("Graphics/simonyellow1.png")
 b = pg.image.load("Graphics/simonblue1.png")
 r = pg.image.load("Graphics/simonred1.png")
@@ -47,7 +45,7 @@ def flash(color):
     pg.display.update()
 
 
-# runs computer sequence of pattern user copies 
+# runs computer sequence of pattern user copies
 def runSequence():
     pg.time.delay(700)
     for i in range(len(logic.getSequence())):
@@ -56,7 +54,7 @@ def runSequence():
         pg.time.delay(300)
 
 
-# runs the actual game 
+# runs the actual game
 def mainGame():
     buttonG.draw(screen, 0, 200, 0)
     buttonR.draw(screen, 200, 0, 0)
@@ -93,8 +91,10 @@ def mainGame():
             simonSoundPanel.soundColor(currentColor)
             logic.appendPlayerSequence(currentColor)
             if logic.check() is False:
-                print("you failed")  # TODO bring to loss screen instead -> lossPage()
-                logic.setHighScore() # sets high score if this game is higher than current high score
+                print("you failed"
+                      )  # TODO bring to loss screen instead -> lossPage()
+                logic.setHighScore(
+                )  # sets high score if this game is higher than current high score
                 print(logic.getHighScore())
                 loop = False
 
@@ -104,6 +104,7 @@ def mainGame():
                 runSequence()
             allowClick = True
 
+
 # loads in the title screen pngs
 title1 = pg.image.load("Graphics/KGD Logo frame 1-1.png.png")
 title2 = pg.image.load("Graphics/kgd frame 2.png")
@@ -112,10 +113,11 @@ title4 = pg.image.load("Graphics/kgd frame 4.png")
 title5 = pg.image.load("Graphics/kgd frame 5.png")
 
 titles = [title1, title2, title3, title4, title5]
-# title screen background png 
+# title screen background png
 background = pg.image.load("Graphics/background2.png")
 
-# plays title screen animation 
+
+# plays title screen animation
 def titleScreen():
     screen.blit(background, (0, 0))  # upload background
     for title in titles:
@@ -128,22 +130,25 @@ def titleScreen():
         pg.display.update()
         pg.time.delay(200)
 
-# TODO write menu screen funtion 
+
+# TODO write menu screen funtion
 def menu():
     pass
 
+
 # TODO write loss page function - don't forget to add high score logic in here and create .txt file somewhere else to store high score
 def lossPage():
-    pass 
+    pass
+
 
 def main():
     titleScreen()
     titleScreen()
     mainGame()
 
+
 if __name__ == "__main__":
     main()
-
 
 pg.quit()
 quit()
