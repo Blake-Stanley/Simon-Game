@@ -49,7 +49,7 @@ def flash(color):
 
 # runs computer sequence of pattern user copies 
 def runSequence():
-    pg.time.delay(500)
+    pg.time.delay(700)
     for i in range(len(logic.getSequence())):
         flash(logic.getSequence()[i])
         simonSoundPanel.soundColor(logic.getSequence()[i])
@@ -94,6 +94,7 @@ def mainGame():
             logic.appendPlayerSequence(currentColor)
             if logic.check() is False:
                 print("you failed")  # TODO bring to loss screen instead -> lossPage()
+                logic.setHighScore() # sets high score if this game is higher than current high score
                 loop = False
 
             elif len(logic.getPlayerSequence()) == len(logic.getSequence()):
@@ -135,7 +136,6 @@ def lossPage():
     pass 
 
 def main():
-    titleScreen()
     titleScreen()
     titleScreen()
     mainGame()
