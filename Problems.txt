@@ -1,0 +1,4 @@
+The "animations" don't let user click during them and show wheel of death...
+see this link to fix 
+
+https://stackoverflow.com/questions/14044147/animated-sprite-from-few-images 
