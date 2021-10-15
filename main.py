@@ -95,6 +95,7 @@ def mainGame():
             if logic.check() is False:
                 print("you failed")  # TODO bring to loss screen instead -> lossPage()
                 logic.setHighScore() # sets high score if this game is higher than current high score
+                print(logic.getHighScore())
                 loop = False
 
             elif len(logic.getPlayerSequence()) == len(logic.getSequence()):

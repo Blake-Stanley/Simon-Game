@@ -1,4 +1,7 @@
-The "animations" don't let user click during them and show wheel of death...
+The "animations" don't let user click during them and show wheel of death... also makes game slow
 see this link to fix 
 
 https://stackoverflow.com/questions/14044147/animated-sprite-from-few-images 
+
+add current score visual - most likely within flash function after blit default png 
+
