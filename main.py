@@ -1,13 +1,15 @@
 import pygame as pg
-import button
-import simonSoundPanel
-import logic
+
+# by including a "__init__.py" in all the folders, by doing folder.file we can import from other folders
+import Graphics.Button as button
+import Sounds.simonSoundPanel as simonSoundPanel
+import Logic.logic as logic 
 
 surface = pg.display.set_mode((672, 672))
 pg.display.set_caption("Simon Game")
 
 screen = pg.display.set_mode((672, 672))
-mainPNG = pg.image.load("simondefault1.png")
+mainPNG = pg.image.load("Graphics/simondefault1.png")
 
 pg.font.init()
 # from button.py
@@ -21,10 +23,10 @@ buttonB = button.Button(335, 335, 672, 672, "Blue")
 pg.display.flip()
 
 # color must be inputted as 'r' 'g' 'b' or 'y'
-y = pg.image.load("simonyellow1.png")
-b = pg.image.load("simonblue1.png")
-r = pg.image.load("simonred1.png")
-g = pg.image.load("simongreen1.png")
+y = pg.image.load("Graphics/simonyellow1.png")
+b = pg.image.load("Graphics/simonblue1.png")
+r = pg.image.load("Graphics/simonred1.png")
+g = pg.image.load("Graphics/simongreen1.png")
 
 
 def flash(color):
@@ -100,15 +102,18 @@ def mainGame():
                 print("running sequence")
             allowClick = True
 
-title1 = pg.image.load("KGD Logo frame 1.png")
-title2 = pg.image.load("kgd logo frame 2.png")
-title3 = pg.image.load("kgd frame 3.png")
-title4 = pg.image.load("kgd frame 4.png")
-title5 = pg.image.load("kgd frame 5.png")
+title1 = pg.image.load("Graphics/KGD Logo frame 1.png")
+title2 = pg.image.load("Graphics/kgd frame 2.png")
+title3 = pg.image.load("Graphics/kgd frame 3.png")
+title4 = pg.image.load("Graphics/kgd frame 4.png")
+title5 = pg.image.load("Graphics/kgd frame 5.png")
 
 titles = [title1, title2, title3, title4, title5]
 
+background = pg.image.load("background2.png")
+
 def titleScreen():
+    screen.blit(background, (0, 0))  # upload background
     for title in titles:
         screen.blit(title, (0, 0))
         pg.display.update()
@@ -123,7 +128,7 @@ def titleScreen():
 def menu():
     pass
 
-# TODO write loss page function - don't forget to add high score logic in here 
+# TODO write loss page function - don't forget to add high score logic in here and create .txt file somewhere else to store high score
 def lossPage():
     pass 
 
@@ -135,6 +140,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# TODO  ADD COMMENTS EXPLAINING STUFF, USE OTHER VERSION FOR HELP 
 
 pg.quit()
 quit()
