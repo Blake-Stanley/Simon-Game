@@ -11,7 +11,9 @@ pg.display.set_caption("Simon Game")
 screen = pg.display.set_mode((672, 672))
 mainPNG = pg.image.load("Graphics/simondefault1.png")
 
-pg.font.init()
+pg.init()
+font = pg.font.Font('freesansbold.ttf', 32)
+
 # create buttons that rest behind pngs that create clickability
 buttonG = button.Button(0, 0, 335, 335, "Green")
 buttonR = button.Button(335, 0, 672, 335, "Red")
@@ -27,6 +29,7 @@ b = pg.image.load("Graphics/simonblue1.png")
 r = pg.image.load("Graphics/simonred1.png")
 g = pg.image.load("Graphics/simongreen1.png")
 
+highScore = logic.getHighScore()
 
 def flash(color):
     if color == "y":
@@ -39,9 +42,26 @@ def flash(color):
         flashedPNG = g
 
     screen.blit(flashedPNG, (0, 0))
+    
+    # putting high score on the screen
+    text2 = font.render(f"High Score: {highScore}", True, (50, 250, 50))
+    textRect2 = text2.get_rect()
+    textRect2.center = ((672/3 + 1)*2, 640)
+    surface.blit(text2, textRect2)
+    
+    # putting current score on the screen
+    text = font.render(f"Score: {len(logic.getSequence()) - 1}", True, (50, 250, 50))
+    textRect = text.get_rect()
+    textRect.center = (672/3 + 1, 640)
+    surface.blit(text, textRect)
+    
     pg.display.update()
+    
     pg.time.delay(200)
     screen.blit(mainPNG, (0, 0))
+    surface.blit(text, textRect)
+    surface.blit(text2, textRect2)
+    
     pg.display.update()
 
 
@@ -142,8 +162,8 @@ def lossPage():
 
 
 def main():
-    titleScreen()
-    titleScreen()
+    # titleScreen()
+    # titleScreen()
     mainGame()
 
 
