@@ -31,6 +31,7 @@ g = pg.image.load("Graphics/simongreen1.png")
 
 highScore = logic.getHighScore()
 
+
 def flash(color):
     if color == "y":
         flashedPNG = y
@@ -42,26 +43,27 @@ def flash(color):
         flashedPNG = g
 
     screen.blit(flashedPNG, (0, 0))
-    
+
     # putting high score on the screen
     text2 = font.render(f"High Score: {highScore}", True, (50, 250, 50))
     textRect2 = text2.get_rect()
-    textRect2.center = ((672/3 + 1)*2, 640)
+    textRect2.center = ((672 / 3 + 1) * 2, 640)
     surface.blit(text2, textRect2)
-    
+
     # putting current score on the screen
-    text = font.render(f"Score: {len(logic.getSequence()) - 1}", True, (50, 250, 50))
+    text = font.render(f"Score: {len(logic.getSequence()) - 1}", True,
+                       (50, 250, 50))
     textRect = text.get_rect()
-    textRect.center = (672/3 + 1, 640)
+    textRect.center = (672 / 3 + 1, 640)
     surface.blit(text, textRect)
-    
+
     pg.display.update()
-    
+
     pg.time.delay(200)
     screen.blit(mainPNG, (0, 0))
     surface.blit(text, textRect)
     surface.blit(text2, textRect2)
-    
+
     pg.display.update()
 
 
