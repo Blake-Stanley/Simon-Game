@@ -1,6 +1,6 @@
 Recreation of the Simon game in Python using Pygame
 
-*How to Downlaod:*
+***How to Downlaod:***
 
 
 Currently unfinished...
