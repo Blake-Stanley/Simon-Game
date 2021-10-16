@@ -3,5 +3,4 @@ see this link to fix
 
 https://stackoverflow.com/questions/14044147/animated-sprite-from-few-images 
 
-add current score visual - most likely within flash function after blit default png 
 
