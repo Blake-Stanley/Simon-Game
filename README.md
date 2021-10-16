@@ -1,16 +1,23 @@
 Recreation of the Simon game in Python using Pygame
 
 
-#How to Download:#
+# How to Download:
 
 
 Currently unfinished...
 
-#Loading Screen: 
+# Features: 
+Simon game is a game where a random color pattern appears and the player must copy that pattern afterwards. After successfully copying the pattern, the pattern gets longer.
+This recreation of the popular game has custom sound, custom graphics, and a high score. 
 
-#Menu:
+## Loading Screen: 
+*insert image
 
-#Game:
+## Menu:
+*insert image
 
-#Loss Screen:
+## Game:
+*insert image
 
+## Loss Screen:
+*insert image
