@@ -10,14 +10,14 @@ Currently unfinished...
 Simon game is a game where a random color pattern appears and the player must copy that pattern afterwards. After successfully copying the pattern, the pattern gets longer.
 This recreation of the popular game has custom sound, custom graphics, and a high score. 
 
-## Loading Screen: 
+### Loading Screen: 
 *insert image
 
-## Menu:
+### Menu:
 *insert image
 
-## Game:
+### Game:
 *insert image
 
-## Loss Screen:
+### Loss Screen:
 *insert image
