@@ -47,14 +47,14 @@ def flash(color):
     # putting high score on the screen
     text2 = font.render(f"High Score: {highScore}", True, (50, 250, 50))
     textRect2 = text2.get_rect()
-    textRect2.center = ((672 / 3 + 1) * 2, 640)
+    textRect2.center = ((672 / 5 + 1) * 4, 640)
     surface.blit(text2, textRect2)
 
     # putting current score on the screen
     text = font.render(f"Score: {len(logic.getSequence()) - 1}", True,
                        (50, 250, 50))
     textRect = text.get_rect()
-    textRect.center = (672 / 3 + 1, 640)
+    textRect.center = (672 / 5 + 1, 640)
     surface.blit(text, textRect)
 
     pg.display.update()
@@ -83,6 +83,7 @@ def mainGame():
     buttonY.draw(screen, 200, 70, 50)
     buttonB.draw(screen, 0, 0, 200)
     screen.blit(mainPNG, (0, 0))
+    
     # add value to sequence to create first sequence
     logic.progress()
     runSequence()
@@ -96,35 +97,35 @@ def mainGame():
             if event.type == pg.QUIT:
                 loop = False
 
-        if event.type == pg.MOUSEBUTTONDOWN and allowClick is True:
-            allowClick = False
-            pos = pg.mouse.get_pos()
-            if buttonG.isClicked(pos):
-                currentColor = "g"
-            elif buttonR.isClicked(pos):
-                currentColor = "r"
-            elif buttonY.isClicked(pos):
-                currentColor = "y"
-            elif buttonB.isClicked(pos):
-                currentColor = "b"
+            if event.type == pg.MOUSEBUTTONDOWN and allowClick is True:
+                allowClick = False
+                pos = pg.mouse.get_pos()
+                if buttonG.isClicked(pos):
+                    currentColor = "g"
+                elif buttonR.isClicked(pos):
+                    currentColor = "r"
+                elif buttonY.isClicked(pos):
+                    currentColor = "y"
+                elif buttonB.isClicked(pos):
+                    currentColor = "b"
 
-        if event.type == pg.MOUSEBUTTONUP and not allowClick:
-            flash(currentColor)
-            simonSoundPanel.soundColor(currentColor)
-            logic.appendPlayerSequence(currentColor)
-            if logic.check() is False:
-                print("you failed"
-                      )  # TODO bring to loss screen instead -> lossPage()
-                logic.setHighScore(
-                )  # sets high score if this game is higher than current high score
-                print(logic.getHighScore())
-                loop = False
+            if event.type == pg.MOUSEBUTTONUP and not allowClick:
+                flash(currentColor)
+                simonSoundPanel.soundColor(currentColor)
+                logic.appendPlayerSequence(currentColor)
+                if logic.check() is False:
+                    print("you failed"
+                        )  # TODO bring to loss screen instead -> lossPage()
+                    logic.setHighScore(
+                    )  # sets high score if this game is higher than current high score
+                    print(logic.getHighScore())
+                    loop = False
 
-            elif len(logic.getPlayerSequence()) == len(logic.getSequence()):
-                logic.clearPlayerSequence()
-                logic.progress()
-                runSequence()
-            allowClick = True
+                elif len(logic.getPlayerSequence()) == len(logic.getSequence()):
+                    logic.clearPlayerSequence()
+                    logic.progress()
+                    runSequence()
+                allowClick = True
 
 
 # loads in the title screen pngs
@@ -153,11 +154,29 @@ def titleScreen():
         pg.time.delay(200)
 
 
-# TODO write menu screen funtion
+menuScreen = pg.image.load("Graphics/titlescreen.png")
 def menu():
-    pass
-
-
+    loop = True
+    buttonStart = button.Button(170, 350, 370, 250, "Start")
+    
+    buttonStart.draw(surface, 255,255,255)
+    screen.blit(menuScreen, (0, 0))
+    pg.display.update()
+        
+    while loop:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                loop = False
+                pg.quit()
+                quit()
+        
+            if event.type == pg.MOUSEBUTTONUP:
+                pos = pg.mouse.get_pos()
+                if buttonStart.isClicked(pos):
+                    loop = False
+    mainGame()  
+     
+                
 # TODO write loss page function - don't forget to add high score logic in here and create .txt file somewhere else to store high score
 def lossPage():
     pass
@@ -165,8 +184,8 @@ def lossPage():
 
 def main():
     # titleScreen()
-    # titleScreen()
-    mainGame()
+    menu()
+    #mainGame()
 
 
 if __name__ == "__main__":

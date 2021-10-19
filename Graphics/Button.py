@@ -22,6 +22,6 @@ class Button:
 
     # Determine if the mouse click was on the button
     def isClicked(self,mouse):
-        if(mouse[0] >= self.x1 and mouse[0] <= self.x2) and (mouse[1] >= self.y1 and mouse[1] <= self.y2):
+        if(mouse[0] >= self.x1 and mouse[0] <= self.x1 + self.x2) and (mouse[1] >= self.y1 and mouse[1] <= self.y1 + self.y2):
             return True
         return False
