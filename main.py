@@ -45,16 +45,16 @@ def flash(color):
     screen.blit(flashedPNG, (0, 0))
 
     # putting high score on the screen
-    text2 = font.render(f"High Score: {highScore}", True, (50, 250, 50))
+    text2 = font.render(f"Best: {highScore}", True, (50, 250, 50))
     textRect2 = text2.get_rect()
-    textRect2.center = ((672 / 5 + 1) * 4, 640)
+    textRect2.center = ((672 / 6 + 4) * 5 -5, 640)
     surface.blit(text2, textRect2)
 
     # putting current score on the screen
     text = font.render(f"Score: {len(logic.getSequence()) - 1}", True,
                        (50, 250, 50))
     textRect = text.get_rect()
-    textRect.center = (672 / 5 + 1, 640)
+    textRect.center = (672 / 6 - 20, 640)
     surface.blit(text, textRect)
 
     pg.display.update()
@@ -86,6 +86,21 @@ def mainGame():
     
     # add value to sequence to create first sequence
     logic.progress()
+    # putting high score on the screen
+    text2 = font.render(f"Best: {highScore}", True, (50, 250, 50))
+    textRect2 = text2.get_rect()
+    textRect2.center = ((672 / 6 + 4) * 5 -5, 640)
+    surface.blit(text2, textRect2)
+
+    # putting current score on the screen
+    text = font.render(f"Score: {len(logic.getSequence()) - 1}", True,
+                       (50, 250, 50))
+    textRect = text.get_rect()
+    textRect.center = (672 / 6 - 20, 640)
+    surface.blit(text, textRect)
+    pg.display.update()
+    pg.time.delay(300)
+    
     runSequence()
 
     # variable tracks whether the button has been clicked so that if you hold down mouseclick it only clicks once
@@ -183,9 +198,8 @@ def lossPage():
 
 
 def main():
-    # titleScreen()
+    titleScreen()
     menu()
-    #mainGame()
 
 
 if __name__ == "__main__":
