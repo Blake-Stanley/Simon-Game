@@ -29,7 +29,6 @@ b = pg.image.load("Graphics/simonblue1.png")
 r = pg.image.load("Graphics/simonred1.png")
 g = pg.image.load("Graphics/simongreen1.png")
 
-highScore = logic.getHighScore()
 
 
 def flash(color):
@@ -44,6 +43,8 @@ def flash(color):
 
     screen.blit(flashedPNG, (0, 0))
 
+    highScore = logic.getHighScore()
+    
     # putting high score on the screen
     text2 = font.render(f"Best: {highScore}", True, (50, 250, 50))
     textRect2 = text2.get_rect()
@@ -83,6 +84,8 @@ def mainGame():
     buttonY.draw(screen, 200, 70, 50)
     buttonB.draw(screen, 0, 0, 200)
     screen.blit(mainPNG, (0, 0))
+    
+    highScore = logic.getHighScore()
     
     # add value to sequence to create first sequence
     logic.progress()
@@ -129,18 +132,15 @@ def mainGame():
                 simonSoundPanel.soundColor(currentColor)
                 logic.appendPlayerSequence(currentColor)
                 if logic.check() is False:
-                    print("you failed"
-                        )  # TODO bring to loss screen instead -> lossPage()
-                    logic.setHighScore(
-                    )  # sets high score if this game is higher than current high score
-                    print(logic.getHighScore())
                     loop = False
+                    gameOver()
 
                 elif len(logic.getPlayerSequence()) == len(logic.getSequence()):
                     logic.clearPlayerSequence()
                     logic.progress()
                     runSequence()
                 allowClick = True
+
 
 
 # loads in the title screen pngs
@@ -168,7 +168,7 @@ def titleScreen():
         pg.display.update()
         pg.time.delay(200)
 
-
+# menu screen to click play
 menuScreen = pg.image.load("Graphics/titlescreen.png")
 def menu():
     loop = True
@@ -191,12 +191,38 @@ def menu():
                     loop = False
     mainGame()  
      
-                
-# TODO write loss page function - don't forget to add high score logic in here and create .txt file somewhere else to store high score
+
+# screen to show score of the game, high score, and to be able to play again                
+# lossScreen = pg.image.load("Graphics/titlescreen.png")
 def lossPage():
-    pass
+    loop = True
+    buttonReplay = button.Button(170, 350, 370, 250, "replay")
+    
+    buttonReplay.draw(surface, 255,255,255)
+    # screen.blit(lossScreen, (0, 0))
+    pg.display.update()
+        
+    while loop:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                loop = False
+                pg.quit()
+                quit()
+        
+            if event.type == pg.MOUSEBUTTONUP:
+                pos = pg.mouse.get_pos()
+                if buttonReplay.isClicked(pos):
+                    loop = False
+    mainGame() 
 
+# clears data of current game, saving new high score if its higher and starts new game 
+def gameOver():
+    logic.setHighScore()
+    logic.clearPlayerSequence()
+    logic.clearSequence()
+    lossPage()
 
+# main function
 def main():
     titleScreen()
     menu()

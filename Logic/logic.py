@@ -50,7 +50,7 @@ def getHighScore():
 # sets high score to the player's score
 def setHighScore():
     current_high_score = int(getHighScore())
-    if current_high_score < len(sequence) - 1:
+    if current_high_score < len(sequence):
         current_high_score_obj = open(
             'Logic/highScore.txt', 'w')  # w mode allows writing vs r reading
         current_score = "" + str(len(sequence) - 1)
@@ -61,3 +61,7 @@ def setHighScore():
 def clearHighScore():
     current_high_score_obj = open('Logic/highScore.txt', 'w')
     current_high_score_obj.write("0")
+
+def clearSequence():
+    sequence.clear() 
+    
