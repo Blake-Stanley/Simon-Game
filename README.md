@@ -1,4 +1,6 @@
-Recreation of the Simon game in Python using Pygame
+Recreation of the Simon game in Python using Pygame.
+
+## Logic, graphics code, and main.py written by Blake Stanley | Art by Vaughn Johnson | "Sound" folder written by Jack Anderson
 
 Currently unfinished...
 
