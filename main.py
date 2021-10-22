@@ -133,7 +133,7 @@ def mainGame():
                 logic.appendPlayerSequence(currentColor)
                 if logic.check() is False:
                     loop = False
-                    gameOver()
+                    lossPage()
 
                 elif len(logic.getPlayerSequence()) == len(logic.getSequence()):
                     logic.clearPlayerSequence()
@@ -193,13 +193,36 @@ def menu():
      
 
 # screen to show score of the game, high score, and to be able to play again                
-# lossScreen = pg.image.load("Graphics/titlescreen.png")
+lossScreen = pg.image.load("Graphics/game over screen.png")
 def lossPage():
     loop = True
-    buttonReplay = button.Button(170, 350, 370, 250, "replay")
+    buttonReplay = button.Button(0, 0, 672, 672, "replay")
     
     buttonReplay.draw(surface, 255,255,255)
-    # screen.blit(lossScreen, (0, 0))
+    screen.blit(lossScreen, (0, 0))
+    
+    highScore = logic.getHighScore()
+    
+    # putting high score on the screen
+    text2 = font.render(f"Best: {highScore}", True, (50, 250, 50))
+    textRect2 = text2.get_rect()
+    textRect2.center = ((672 / 6 + 4) * 5 -5, 640)
+    surface.blit(text2, textRect2)
+
+    # adding prompt to screen
+    text = font.render("Click to play again", True,
+                       (50, 250, 50))
+    textRect = text.get_rect()
+    textRect.center = (672 / 2, 672/3 * 2 + 20)
+    surface.blit(text, textRect)
+
+    # adding score to screen 
+    text3 = font.render(f"Score: {len(logic.getSequence()) - 1}", True,
+                       (50, 250, 50))
+    textRect = text2.get_rect()
+    textRect.center = (672 / 6 - 20, 640)
+    surface.blit(text3, textRect)
+    
     pg.display.update()
         
     while loop:
@@ -213,14 +236,16 @@ def lossPage():
                 pos = pg.mouse.get_pos()
                 if buttonReplay.isClicked(pos):
                     loop = False
-    mainGame() 
+    gameOver()
+
 
 # clears data of current game, saving new high score if its higher and starts new game 
 def gameOver():
     logic.setHighScore()
     logic.clearPlayerSequence()
     logic.clearSequence()
-    lossPage()
+    mainGame() 
+    
 
 # main function
 def main():
