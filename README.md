@@ -6,7 +6,7 @@
 
 # How to Download:
 
-
+Click the green code button, download as a zip file, and run main.py
 
 
 # Features: 
